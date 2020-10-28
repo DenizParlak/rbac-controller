@@ -4,7 +4,6 @@ userSet="QA|FrontEnd|Backend"
 accessType="R|RW|A"
 SHARED_CLUSTER="shared"
 DEV_CLUSTER="dev"
-DEV_CLUSTER="dev"
 PROD_CLUSTER="prod"
 
 echoUsage()
