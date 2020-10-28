@@ -9,13 +9,13 @@ To create user Jim in any group like 'QA' for kubernetes any cluster like 'share
 - Generating the jim.key and kubeconfig
 
 ```bash
-$ ./run-all.sh QA  
+$ ./all.sh QA  
 Shared cluster
-Usage: ./run-all.sh <namespace> <user-group> <access-type>
+Usage: ./all.sh <namespace> <user-group> <access-type>
 Values for <user-group> : QA|FrontEnd|Backend
 Values for <access-type> : R|RW
 
-$ ./run-all.sh QA R
+$ ./all.sh QA R
 
 Shared cluster
 -------------------------------
@@ -42,6 +42,7 @@ NAME                   AGE   SIGNERNAME                     REQUESTOR          C
 shared-QA-R-csr   3s    kubernetes.io/legacy-unknown   kubernetes-admin   Approved,Issued
 clusterrole.rbac.authorization.k8s.io/role-shared-QA-R created
 clusterrolebinding.rbac.authorization.k8s.io/rolebinding-shared-QA-R created
+
 -------------------------------
           Share the following files with the QA
           ./shared//QA/kubeconfig
@@ -71,12 +72,16 @@ $ $ kubectl config set-credentials jim \
   >   --embed-certs=true
   User "jim" set.
 
+$ whoami
+deniz
+
 $ kubectl get pods -n monitoring
 NAME                       READY   STATUS    RESTARTS   AGE
 grafana-statefulset-0      1/1     Running   0          53m
 prometheus-statefulset-0   2/2     Running   0          54m
+elk-statefulset-0          2/2     Running   0          2m
 
-$ kubectl get pods -n default    
+$ kubectl get pods -n default
 No resources found.
 
 $ kubectl get namespace  
